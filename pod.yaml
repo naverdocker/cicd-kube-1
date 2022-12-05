@@ -10,7 +10,7 @@ spec:
     app: new
   ports:
     - name: http
-      protocol: tcp
+      protocol: TCP
       port: 80
 
 ---
