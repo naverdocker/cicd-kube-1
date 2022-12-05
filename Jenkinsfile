@@ -21,8 +21,8 @@ pipeline {
 		}
 		stage ('Deploy to Kubernetes') {
 			steps {
-				sh 'kubectl apply -f /var/lib/jenkins/workspace/cicd-project-kube-1/pod.yaml'
-				sh 'kubectl rollout restart deployment dep-1'
+				sh 'sudo kubectl apply -f /var/lib/jenkins/workspace/cicd-project-kube-1/pod.yaml'
+				sh 'sudo kubectl rollout restart deployment dep-1'
 			}
 		} 
 	}
