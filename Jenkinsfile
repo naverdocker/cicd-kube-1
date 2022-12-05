@@ -27,6 +27,13 @@ pipeline {
 				sh 'docker push naverdocker/cicd-project-kube-1:${BUILD_NUMBER}'
 			}
 		}
+		
+		stage ('Deploy to Kubernetes') {
+			steps {
+				sh 'kubectl apply -f /var/lib/jenkins/workspace/kube-project/pod.yaml'
+				sh 'kubectl rollout restart deployment dep-1
+			}
+		} 
 	}
 }	
 												
