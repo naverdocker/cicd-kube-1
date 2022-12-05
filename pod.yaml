@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: lb-1
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: new
+  ports:
+    - name: http
+      protocol: tcp
+      port: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: dep-1
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: new
+  template: 
+    metadata:
+      labels:
+        app: new
+    spec:
+      containers:
+        - name: new
+          image: naverdocker/cicd-project-kube-1:latest
+          imagePullPolicy: always
