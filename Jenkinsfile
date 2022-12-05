@@ -25,8 +25,10 @@ pipeline {
 				}
 				sh 'docker push naverdocker/cicd-project-kube-1:latest'
 				sh 'docker push naverdocker/cicd-project-kube-1:${BUILD_NUMBER}'
+			}
+		}
 	}
-}
+}	
 												
 		
 
