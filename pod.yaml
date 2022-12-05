@@ -33,4 +33,4 @@ spec:
       containers:
         - name: new
           image: naverdocker/cicd-project-kube-1:latest
-          imagePullPolicy: always
+          imagePullPolicy: Always
