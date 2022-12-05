@@ -3,13 +3,6 @@ pipeline {
 	agent any
 
 	stages {
-
-		stage ('TEST') {
-			steps {
-				echo "Test"
-			}
-		}
-
 		stage ('Docker Build') {
 			steps {
 				sh 'docker build -t cicd-project-kube-1 .'
@@ -17,7 +10,6 @@ pipeline {
 				sh 'docker tag cicd-project-kube-1 naverdocker/cicd-project-kube-1:${BUILD_NUMBER}'
 			}
 		}
-		
 		stage ('Docker Publish') {
 			steps {
 				withCredentials([string(credentialsId: 'dockerhub_secret', variable: 'dockerhub_pass')]) {
@@ -27,7 +19,6 @@ pipeline {
 				sh 'docker push naverdocker/cicd-project-kube-1:${BUILD_NUMBER}'
 			}
 		}
-		
 		stage ('Deploy to Kubernetes') {
 			steps {
 				sh 'sudo kubectl apply -f /var/lib/jenkins/workspace/kube-project/pod.yaml'
@@ -36,6 +27,4 @@ pipeline {
 		} 
 	}
 }	
-												
-		
 
