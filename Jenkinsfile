@@ -31,7 +31,7 @@ pipeline {
 		stage ('Deploy to Kubernetes') {
 			steps {
 				sh 'kubectl apply -f /var/lib/jenkins/workspace/kube-project/pod.yaml'
-				sh 'kubectl rollout restart deployment dep-1
+				sh 'kubectl rollout restart deployment dep-1'
 			}
 		} 
 	}
