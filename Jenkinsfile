@@ -20,7 +20,7 @@ pipeline {
 		
 		stage ('Docker Publish') {
 			steps {
-				withCredentials([usernameColonPassword(credentialsId: 'dockerhub_cred', variable: 'dockerhub-pass')]) {
+				withCredentials([string(credentialsId: 'dockerhub_secret', variable: 'dockerhub-pass')]) {
     					sh 'docker login -u naverdocker -p ${dockerhub-pass}'		
 				}
 				sh 'docker push naverdocker/cicd-project-kube-1:latest'
